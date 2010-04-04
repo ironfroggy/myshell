@@ -1,4 +1,4 @@
-export PATH=$PATH:/home/calvin/.local/bin/
+export PATH=$PATH:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/
 setxkbmap us -option compose:lwin
 xmodmap ~/.xmodmap
 export EC2_HOME=~/.ec2
@@ -20,4 +20,8 @@ alias v.cdsitepackages=cdsitepackages
 alias v.cd=cdvirtualenv
 alias v.lssitepackages=lssitepackages
 v 0
+
+alias ls="ls -1"
+alias l="ls -1"
+alias ll="ls -1l"
 

@@ -248,9 +248,10 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " mouse everywhere
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a
+"set mouse=a
+set mouse=
 " Next fixes screen+vim mouse problems
-set ttymouse=xterm2
+"set ttymouse=xterm2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Window Movement Mappings
@@ -600,4 +601,12 @@ map <M-Right> :bn<CR>
 nnoremap x <Esc>:wqa<CR>
 nnoremap w <Esc>:w<CR>
 
-
+" Force myself to learn more vi movements
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
