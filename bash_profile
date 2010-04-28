@@ -1,3 +1,5 @@
+source virtualenvwrapper.sh
+
 export PATH=$PATH:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/
 setxkbmap us -option compose:lwin
 xmodmap ~/.xmodmap
@@ -19,7 +21,7 @@ alias v.add2virtualenv=add2virtualenv
 alias v.cdsitepackages=cdsitepackages
 alias v.cd=cdvirtualenv
 alias v.lssitepackages=lssitepackages
-v 0
+alias v.pip="pip -E ~/.virtualenvs/`workon`"
 
 alias ls="ls -1"
 alias l="ls -1"
