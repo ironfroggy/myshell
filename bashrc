@@ -54,3 +54,5 @@ export ANDROID_NDK="/opt/android-ndk"
 export ANDROID_SDK="/opt/android-sdk"
 
 source /etc/bash_completion
+
+eval $(ssh-agent -s)
