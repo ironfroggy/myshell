@@ -1,0 +1,236 @@
+# GNU Screen configuration file
+#
+# Sarunas Vancevicius <svan_AT_redbrick_DOT_dcu_DOT_ie>
+# This file can be found at http://svan.redbrick.dcu.ie/configs/
+
+# I'm pretty sure this config was heavily influenced by .screenrc config by
+# Sven Guckes.
+
+# BOTTOM OF FILE FOR KEYBINDINGS
+
+screen -t sh 0 bash
+select 0
+
+# shell zsh
+
+hardstatus on
+hardstatus alwayslastline
+
+# good for fresco color scheme
+# hardstatus string  "%{-b cK} %?%-w%?%{+b}%n%f %t%{-b} %?%+w%? %= %0c "
+
+# shortened pretty green string
+hardstatus string "%{.gW}%H  %-w%{.GW}%n %t%{-}%+w %=%{..G} %{..Y} %C%a "
+
+# cool shortened multicolored (from below):
+# hardstatus string "%{kr} %H %{ky} %c %{+b}%{yb} %=%?%-w%?[%n%f %t]%?%+w%? "
+
+# my pretty green string
+# hardstatus string "%{.gW}%-w%{.GW}%n %t%{-}%+w %=%{..G}  load: [%l]  %H %{..Y} %m/%d %C%a "
+# this looks good for dark screens:
+# hardstatus string  "%{-b ck} %?%-w%?%{+b}%n%f %t%{-b} %?%+w%? %= %l   %D %d/%m/%Y   %0c "
+#
+# multicolored: ;-)
+# hardstatus string "%{ck}%?%-w%?[%n*%f %t]%?%+Lw%?%=| %D %d.%m.%y - %c "
+# nicely multicolored:
+# hardstatus string "%{kr} %H %{ky} load[%l] %{kg} %d.%m.%Y %c %{+b}%{yb} %=%?%-w%?[%n%f %t]%?%+w%? "
+
+autodetach             on              # default: on
+crlf                  off             # default: off
+deflogin              off             # default: on
+# defsilence            off             # default: off
+hardcopy_append       on              # default: off
+# nethack               on              # default: off
+startup_message       off             # default: on
+
+# no audible bell
+# vbell_msg             "Ding Ding"
+vbell                   on             # default: off
+vbellwait               0.01
+
+# ===============================================================
+# VARIABLES - Number values
+# ===============================================================
+  defscrollback         1000            # default: 100
+# msgminwait            3               # default: 1
+  silencewait           15              # default: 30
+
+# My beautiful hardstatus line:
+# hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%< %=[%c, %D, %d/%m/%y]"
+
+#hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%< %=[%c:%s, %D, %d/%m/%y]"
+
+# "sorendition": set the colors for
+# the "messages" and "text marking"
+# (ie text you mark in copy mode):
+
+# yellow on blue
+# this seems to BREAK the prettiness but it was my default for a while
+# sorendition 02 34 
+
+# sorendition 10 99 # default!
+# sorendition 02 40 # green  on black
+# sorendition 02 34 # yellow on blue
+# sorendition    rw # red    on white
+# sorendition    kG # black  on bold green
+
+setenv DISPLAY ''
+activity              "activity in %n (%t) [%w:%s]~"
+# bell:         This message *includes* a "beep" with '~'.
+bell                  "bell     in %n (%t) [%w:%s]~"
+
+
+#================================================
+# A bunch of hardstatus lines, Choose one that you like.
+# Taken from a bunch of config files that I could find, 
+# while trying to find the *perfect* hardstatus line.
+#================================================
+#
+# hardstatus alwayslastline "\033[m\033[49;37m %M %d \033[m \033[49;37m%c \033[m \033[37;40m %w \033[m "
+#
+# hardstatus alwayslastline string "%{.1099} %-w%{.bg}%n %t%{-}%+w %=%H %c:%s "
+
+# ===============================
+# Hardstatus Line and sorendition
+# ===============================
+# hardstatus: Always show the window list in the last line:
+# hardstatus alwayslastline "%w"
+#
+# This will show the current time and today's date in YYmmdd, too:
+#hardstatus alwayslastline " %c | %Y%m%d |  %w"
+#
+# Same as the previous - but with COLOR! :-)
+# hardstatus alwayslastline " %m%d \033[42;30m%c\033[m \033[42;30m %w \033[m"
+# hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# hardstatus alwayslastline "[%D, %d/%m/%y %C %a]  %-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# hardstatus alwayslastline "[%D,%c]  %-Lw%{= RW}%50>%n%f* %t%{-}%+Lw%<"
+
+#caption always "%{= kc}%?%-Lw%?%{= kY}%n*%f %t%?(%u)%?%{= kc}%?%+Lw%?"
+#caption always '%{= wb}%50=%n%f %t%{= wb}'
+#caption always '%{= wb}%50=%n%f %t%{= wb}'
+#caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus alwayslastline " %m%d %c \033[42;30m %w \033[m"
+
+#caption always "%>%{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?%<"
+
+#[20:58:40]
+#hardstatus alwayslastline "[%c:%s, %D, %d/%m/%y] %w"
+#hardstatus alwayslastline "[%c:%s, %D, %d/%m/%y] %-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+#hardstatus alwayslastline "[%D, %d/%m/%y %C %a]  %-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# caption always "%{kG}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kG}%?%+Lw%?"
+# caption always "%{=}%{+b kR}%H %{+b kY}%M %d %{+b kG}%2c %{+b kB}%?%-Lw%?%{+b kW}%n*%f %kt%?(%u)%?%{+bkB}%?%+Lw%? | %{kR} Load: %l %{kB}"
+
+# hardstatus alwayslastline "%H %w"
+# example by Adam Spiers <gnu-screen@adamspiers.org> :
+# *without* colors:
+# hardstatus alwayslastline "%?%-Lw%?%n*%f %t%?(%u)%?%?%+Lw%?"
+# *with* colors:
+#
+# This will show the current time and today's date in YYmmdd, too:
+# hardstatus alwayslastline " %c | %Y%m%d |  %w"
+#
+# This will show today's date in mmdd and the current time, too:
+# hardstatus alwayslastline " %m%d %c |  %w"
+#
+# hardstatus alwayslastline " [ %H ] %{wb} %c:%s | %d.%m.%Y %{wr} Load: %l %{wb} %w "
+# hardstatus alwayslastline " %H %{wb} %c:%s | %d.%m.%Y %{wr} Load: %l %{wk} %w "
+#hardstatus alwayslastline "%{bw}%1`%= %{+b ky}| %c:%s |%{+b rw} ip: %2` | vpn: %3`"
+#                                  |                          |          |
+#                                  heise (script in ~/bin/)   |          ipadr_vpn (script in ~/bin/)
+#                                                             |
+#                                                             ipadr (script in ~/bin/)
+#
+# note: the use of ANSI color sequences is deprecated.
+#       please upgrade to (at least) screen 3.9.13
+#       so you can make use of the color letters/names!
+
+
+
+################
+# xterm tweaks
+
+#xterm understands both im/ic and doesn't have a status line.
+#Note: Do not specify im and ic in the real termcap/info file as
+#some programs (e.g. vi) will not work anymore.
+termcap  xterm hs@:cs=\E[%i%d;%dr:im=\E[4h:ei=\E[4l
+terminfo xterm hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l
+
+#80/132 column switching must be enabled for ^AW to work
+#change init sequence to not switch width
+termcapinfo  xterm Z0=\E[?3h:Z1=\E[?3l:is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l
+
+# force scrollbar/scrollback to work
+termcapinfo xterm ti@:te@
+
+# Extend the vt100 desciption by some sequences.
+termcap  vt100* ms:AL=\E[%dL:DL=\E[%dM:UP=\E[%dA:DO=\E[%dB:LE=\E[%dD:RI=\E[%dC
+terminfo vt100* ms:AL=\E[%p1%dL:DL=\E[%p1%dM:UP=\E[%p1%dA:DO=\E[%p1%dB:LE=\E[%p1%dD:RI=\E[%p1%dC
+
+################
+#
+# keybindings
+#
+
+#remove some stupid / dangerous key bindings
+# bind k
+# bind ^k
+# bind .
+# bind ^\
+# bind \\
+# bind ^h
+# bind h
+
+# note this seems to break my home key?!
+# escape ^ff
+
+#make them better
+bind 'K' kill
+bind 'I' login on
+bind 'O' login off
+bind '}' history
+
+# change the command combination to be Ctrl+w
+# bind ^a
+# bindkey "^w" command
+
+# aterm bindings
+# bindkey "^[[c" next
+# bindkey "^[[d" prev
+# bindkey "^[Oc" next
+# bindkey "^[Od" prev
+
+# putty bindings
+# bindkey "^[OC" next
+# bindkey "^[OD" prev
+
+# define Ctrl+ left/right arrow to change between screens in xterm
+# termcapinfo xterm "ks=\E[?1l\E=:ku=\E[A:kd=\E[B:kl=\E[D:kr=\E[C:kh=\E[5~:kH=\E[F"
+# bindkey "^[[5C" next
+# bindkey "^[[5D" prev
+
+# konsole control left/right arrow to swtich
+bindkey [1;5C next
+bindkey [1;5D prev
+# also map alt-arrows to switch between screens in konsole
+bindkey [1;3C next
+bindkey [1;3D prev
+# raw arrows (bad!)
+# bindkey OC next
+# bindkey OD prev
+
+# F1 selects screen1
+# bindkey -k k1 select 1
+
+# ???:
+# bindkey -k f0 windowlist
+# bindkey -k f1 select 1
+# bindkey -k f2 select 2
+# bindkey -k f3 select 3
+# bindkey -k f4 select 4
+# bindkey -k f5 select 5
+# bindkey -k f6 select 6
+# bindkey -k f7 select 7
+# bindkey -k f8 select 8
+# bindkey -k f9 select 9
+
+
