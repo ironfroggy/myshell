@@ -1,0 +1,7 @@
+escape ^Zz
+#screen -t WOC sh -c "cd ~/boxes/woc/; vagrant up; vagrant ssh"
+#screen -t Dooster sh -c "cd ~/boxes/dooster/; vagrant up; vagrant ssh"
+#screen -t Journey33 sh -c "cd ~/projects/journey33/; screen -S J33;"
+#screen -t Med.se sh -c "cd ~/projects/Web.se; screen -S Med.se;"
+screen -t fc sh -c "cd ~/projects/faircompanies/fc; screen -S fc;"
+screen -t shell
