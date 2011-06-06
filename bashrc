@@ -30,3 +30,7 @@ function set_aws_account() {
     export EC2_CERT=`ls $EC2_HOME/cert-$1.pem`
     source ~/.ec2/env-$1.sh
 }
+
+if [ -f ~/.bash_local ]; then
+    source ~/.bash_local
+fi
