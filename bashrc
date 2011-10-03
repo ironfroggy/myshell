@@ -34,3 +34,6 @@ function set_aws_account() {
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
