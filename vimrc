@@ -489,14 +489,6 @@ map 3 :TlistSessionLoad /mnt/non_prod/.development.taglist<CR>
 map <Meta-3> :TlistSessionLoad<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" miniBufExplorer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " F4 switch between textwidth=72 and textwidth=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 set textwidth=0
@@ -610,3 +602,6 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+set undofile
+set undodir=$TEMP
