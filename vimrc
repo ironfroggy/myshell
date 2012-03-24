@@ -44,3 +44,6 @@ set showbreak=.\
 
 autocmd FileType * setlocal nolinebreak
 autocmd FileType * setlocal showbreak=
+
+set undofile
+set undodir=$TEMP

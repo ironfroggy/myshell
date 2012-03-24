@@ -12,6 +12,7 @@ screen -t sh 0 bash
 select 0
 
 # shell zsh
+shell -/bin/bash
 
 hardstatus on
 hardstatus alwayslastline
