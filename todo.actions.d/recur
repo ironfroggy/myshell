@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import re
+
+
+R_PRI = re.compile(r'\(\w\)')
+def strip(task):
+    return R_PRI.sub('', task).strip()
+
+
+def main():
+
+    todo_dir = os.environ.get('TODO_DIR')
+    todo_txt = os.path.join(todo_dir, 'todo.txt')
+    recur_txt = os.path.join(todo_dir, 'recur.txt')
+    open(recur_txt, 'a')
+
+    tasks = list(open(todo_txt))
+    tasks = [strip(t) for t in tasks] 
+
+    with open(todo_txt, 'a') as f:
+        c = 0
+        for line in open(recur_txt):
+            try:
+                rule, task = line.split(':', 1)
+            except ValueError:
+                rule = 'daily'
+                task = line
+            rule = rule.strip()
+            task = task.strip()
+
+            if rule != 'daily':
+                continue
+
+            if task not in tasks:
+                print(task, file=f)
+                print(task)
+                c += 1
+
+        print("Added {} tasks".format(c))
+            
+
+if __name__ == '__main__':
+    sys.exit(main() or 0)

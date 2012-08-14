@@ -40,6 +40,14 @@ function set_aws_account() {
     export EC2_CERT=`ls $EC2_HOME/cert-$1.pem`
     source ~/.ec2/env-$1.sh
 }
+
+if [ -f ~/.bash_local ]; then
+    source ~/.bash_local
+fi
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
 export ANDROID_NDK="/opt/android-ndk"
 export ANDROID_SDK="/opt/android-sdk"
 
