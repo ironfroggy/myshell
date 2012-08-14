@@ -1,3 +1,5 @@
+set nocompatible " TODO: Learn what this really does
+
 set expandtab     " Do not insert tab when <Tab> was pressed - insert a number of spaces
 set shiftwidth=4  " Number of spaces to use for each step of (auto)indent
 set tabstop=4     " Number of spaces that a <Tab> in the file counts for
@@ -268,15 +270,10 @@ set tags+=$HOME/.vim/tags/bz.ctags
 
 " You can also see all the tags youve been to with :tags
 
-" To enable code completion support for Python in Vim you should be able to add the following line to your .vimrc:
+" Make backspace behave in a sane manner.
+set backspace=indent,eol,start
 
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-" 
-" but this relies on the fact that your distro compiled python support into vim (which they should!).
-" 
-" Then all you have to do to use your code completion is hit the unnatural, wrist breaking, keystrokes CTRL+X, CTRL+O. Ive re-bound the code completion to CTRL+Space since we are making vim an IDE! Add this command to your .vimrc to get the better keybinding:
-" 
-inoremap <Nul> <C-x><C-o>
+syntax on
 
 " http://www.vim.org/scripts/script.php?script_id=910
 "
@@ -544,6 +541,31 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+" Highlight search and CTRL+L to clear the highlight
+:set hlsearch
+:nnoremap <silent> <C-l> :noh<CR><C-l>
+
+" xmllint shortcut
+" one or more lines:
+vmap ,px !xmllint --format -<CR>
+" pretty-print current line
+nmap ,px !!xmllint --format -<CR>
+
+" sort lines
+vmap ,ss !sort <CR>
+nmap ,ss :0<CR>VG!sort<CR>
+
+" filetype settings
+filetype on
+filetype plugin on
+filetype indent on
+
+set linebreak
+set showbreak=.\ 
+
+autocmd FileType * setlocal nolinebreak
+autocmd FileType * setlocal showbreak=
 
 set undofile
 set undodir=$TEMP

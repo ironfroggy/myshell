@@ -1,3 +1,5 @@
+source ~/.bashrc_default
+
 source virtualenvwrapper.sh
 
 export PATH=$PATH:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/
