@@ -556,6 +556,11 @@ nmap ,px !!xmllint --format -<CR>
 vmap ,ss !sort <CR>
 nmap ,ss :0<CR>VG!sort<CR>
 
+" edit helpers
+nmap ,en <C-w>h:0<CR>dd<C-w>lp
+nmap ,es <C-w>h:w<CR><C-w>l:w<CR>
+nmap ,eu <C-w>hu<C-w>lu<CR>
+
 " filetype settings
 filetype on
 filetype plugin on

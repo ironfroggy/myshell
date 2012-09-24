@@ -56,3 +56,8 @@ export ANDROID_NDK="/opt/android-ndk"
 export ANDROID_SDK="/opt/android-sdk"
 
 source /etc/bash_completion
+
+eval $(ssh-agent -s)
+
+# Edit commit messages displaying the current diff in the right window
+export GIT_EDITOR='vim -c vsplit -c"e SCRATCH" -c"setlocal bt=nofile ft=diff" -c"r!git diff --cached" -c 1'

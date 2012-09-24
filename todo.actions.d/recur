@@ -3,19 +3,28 @@
 import os
 import sys
 import re
+import argparse
 
 
 R_PRI = re.compile(r'\(\w\)')
 def strip(task):
     return R_PRI.sub('', task).strip()
 
+parser = argparse.ArgumentParser()
+parser.add_argument('rule', metavar='RULE', nargs='?', default=None)
 
-def main():
+
+def main(argv):
+    args, task = parser.parse_known_args(argv[2:])
 
     todo_dir = os.environ.get('TODO_DIR')
     todo_txt = os.path.join(todo_dir, 'todo.txt')
     recur_txt = os.path.join(todo_dir, 'recur.txt')
-    open(recur_txt, 'a')
+    
+    with open(recur_txt, 'a') as f:
+        if args.rule is not None:
+            new_recur_task = ' '.join(task)
+            print(args.rule, ':', new_recur_task, file=f)
 
     tasks = list(open(todo_txt))
     tasks = [strip(t) for t in tasks] 
@@ -43,4 +52,4 @@ def main():
             
 
 if __name__ == '__main__':
-    sys.exit(main() or 0)
+    sys.exit(main(sys.argv) or 0)
