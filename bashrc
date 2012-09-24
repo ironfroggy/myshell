@@ -1,4 +1,6 @@
-source ~/.bashrc_default
+if [ -d "~/.bashrc_default" ] ; then
+    source ~/.bashrc_default
+fi
 
 source virtualenvwrapper.sh
 
