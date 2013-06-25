@@ -11,7 +11,7 @@ while read LINE; do
 done < ~/.bin-paths
 
 setxkbmap us -option compose:lwin
-xmodmap ~/.xmodmap
+xmodmap ~/.xmodmap &2> /dev/null
 export EC2_HOME=~/.ec2
 export PATH=$PATH:$EC2_HOME/bin:~/projects/myshell/bin
 export JAVA_HOME=/usr/
@@ -57,7 +57,7 @@ export ANDROID_SDK="/opt/android-sdk"
 
 source /etc/bash_completion
 
-eval $(ssh-agent -s)
+eval $(ssh-agent -s) > /dev/null 2>&1
 
 # Edit commit messages displaying the current diff in the right window
 export GIT_EDITOR='vim -c vsplit -c"e SCRATCH" -c"setlocal bt=nofile ft=diff" -c"r!git diff --cached" -c 1'
