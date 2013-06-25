@@ -4,7 +4,7 @@ fi
 
 source virtualenvwrapper.sh
 
-export PATH=$PATH:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/
+export PATH=$PATH:/home/calvin/bin:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/
 touch ~/.bin-paths
 while read LINE; do
     export PATH=$PATH:$LINE
