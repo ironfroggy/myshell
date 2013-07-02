@@ -1,17 +1,19 @@
-source ~/.bashrc_default
+if [ -d "~/.bashrc_default" ] ; then
+    source ~/.bashrc_default
+fi
 
 source virtualenvwrapper.sh
 
-export PATH=$PATH:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/
+export PATH=$PATH:/home/calvin/bin:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/
 touch ~/.bin-paths
 while read LINE; do
     export PATH=$PATH:$LINE
 done < ~/.bin-paths
 
 setxkbmap us -option compose:lwin
-xmodmap ~/.xmodmap
 export AWS_HOME=~/.aws
 export PATH=$PATH:$AWS_HOME/bin:~/projects/myshell/bin
+xmodmap ~/.xmodmap &2> /dev/null
 export JAVA_HOME=/usr/
 export PYTHONPATH=$PYTHONPATH:~/projects/pandeploy/
 
@@ -54,7 +56,7 @@ export ANDROID_SDK="/opt/android-sdk"
 
 source /etc/bash_completion
 
-eval $(ssh-agent -s)
+eval $(ssh-agent -s) > /dev/null 2>&1
 
 # Edit commit messages displaying the current diff in the right window
 export GIT_EDITOR='vim -c vsplit -c"e SCRATCH" -c"setlocal bt=nofile ft=diff" -c"r!git diff --cached" -c 1'

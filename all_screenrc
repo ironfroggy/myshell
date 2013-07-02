@@ -5,3 +5,7 @@ escape ^Zz
 #screen -t Med.se sh -c "cd ~/projects/Web.se; screen -S Med.se;"
 #screen -t fc sh -c "cd ~/projects/faircompanies/fc; screen -S fc;"
 screen -t Misc
+select 0
+exec ssh-screen
+exec true
+source $HOME/.ssh/screen_agent

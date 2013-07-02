@@ -574,3 +574,5 @@ autocmd FileType * setlocal showbreak=
 
 set undofile
 set undodir=$TEMP
+
+nmap ,pp <C-w>h:0<CR>dd<C-w>lp
