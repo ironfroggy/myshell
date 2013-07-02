@@ -10,8 +10,8 @@ done < ~/.bin-paths
 
 setxkbmap us -option compose:lwin
 xmodmap ~/.xmodmap
-export EC2_HOME=~/.ec2
-export PATH=$PATH:$EC2_HOME/bin:~/projects/myshell/bin
+export AWS_HOME=~/.aws
+export PATH=$PATH:$AWS_HOME/bin:~/projects/myshell/bin
 export JAVA_HOME=/usr/
 export PYTHONPATH=$PYTHONPATH:~/projects/pandeploy/
 
@@ -38,9 +38,8 @@ function add_bin_path() {
 }
 
 function set_aws_account() {
-    export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-$1.pem`
-    export EC2_CERT=`ls $EC2_HOME/cert-$1.pem`
-    source ~/.ec2/env-$1.sh
+    export AWS_ACCESS_KEY_ID=`cat $AWS_HOME/$1/access`
+    export AWS_SECRET_ACCESS_KEY=`cat $AWS_HOME/$1/secret`
 }
 
 if [ -f ~/.bash_local ]; then
