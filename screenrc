@@ -8,11 +8,11 @@
 
 # BOTTOM OF FILE FOR KEYBINDINGS
 
-screen -t sh 0 bash
-select 0
+# screen -t sh 0 bash
+# select 0
 
 # shell zsh
-shell -/bin/bash
+# shell -/bin/bash
 
 hardstatus on
 hardstatus alwayslastline
@@ -22,6 +22,8 @@ hardstatus alwayslastline
 
 # shortened pretty green string
 hardstatus string "%{.gW}%H  %-w%{.GW}%n %t%{-}%+w %=%{..G} %{..Y} %C%a "
+
+caption always "%{.kY}%H  %-w%{.kW}%n %t%{-}%+w %=%{..r} %{..Y} %C%a "
 
 # cool shortened multicolored (from below):
 # hardstatus string "%{kr} %H %{ky} %c %{+b}%{yb} %=%?%-w%?[%n%f %t]%?%+w%? "
@@ -52,9 +54,9 @@ vbellwait               0.01
 # ===============================================================
 # VARIABLES - Number values
 # ===============================================================
-  defscrollback         1000            # default: 100
+defscrollback         1000            # default: 100
 # msgminwait            3               # default: 1
-  silencewait           15              # default: 30
+silencewait           15              # default: 30
 
 # My beautiful hardstatus line:
 # hardstatus alwayslastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%< %=[%c, %D, %d/%m/%y]"
@@ -233,5 +235,4 @@ bindkey [1;3D prev
 # bindkey -k f7 select 7
 # bindkey -k f8 select 8
 # bindkey -k f9 select 9
-
 
