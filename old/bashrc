@@ -2,21 +2,20 @@ if [ -d "~/.bashrc_default" ] ; then
     source ~/.bashrc_default
 fi
 
-source virtualenvwrapper.sh
-
-export PATH=$PATH:/home/calvin/bin:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/
+export PATH=$PATH:/home/calvin/bin:/home/calvin/.local/bin/:/var/lib/gems/1.8/bin/:./node_modules/.bin/
 touch ~/.bin-paths
 while read LINE; do
     export PATH=$PATH:$LINE
 done < ~/.bin-paths
 
-setxkbmap us -option compose:lwin
+# setxkbmap us -option compose:lwin
 export AWS_HOME=~/.aws
 export PATH=$PATH:$AWS_HOME/bin:~/projects/myshell/bin
-xmodmap ~/.xmodmap &2> /dev/null
+# xmodmap ~/.xmodmap &2> /dev/null
 export JAVA_HOME=/usr/
 export PYTHONPATH=$PYTHONPATH:~/projects/pandeploy/
 
+. $(which virtualenvwrapper.sh)
 alias v=workon
 alias v.deactivate=deactivate
 alias v.mk='mkvirtualenv --no-site-packages'
@@ -34,6 +33,11 @@ alias l="ls -1"
 alias ll="ls -1l"
 
 alias t=todo
+
+alias work='ssh calvin@willow-zeta -t screen -ddr'
+alias work.ssh'=ssh calvin@willow-zeta -t'
+alias mg='ssh claykoi@192.168.1.9 -p 2022 -t screen -ddr'
+alias mg.ssh='ssh claykoi@192.168.1.9 -p 2022 -t'
 
 function add_bin_path() {
     echo $1 >> ~/.bin-paths
@@ -60,3 +64,8 @@ eval $(ssh-agent -s) > /dev/null 2>&1
 
 # Edit commit messages displaying the current diff in the right window
 export GIT_EDITOR='vim -c vsplit -c"e SCRATCH" -c"setlocal bt=nofile ft=diff" -c"r!git diff --cached" -c 1'
+
+export SCREENDIR=$HOME/.screen
+
+eval "$(starship init bash)"
+

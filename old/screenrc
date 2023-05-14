@@ -169,6 +169,11 @@ termcapinfo xterm ti@:te@
 termcap  vt100* ms:AL=\E[%dL:DL=\E[%dM:UP=\E[%dA:DO=\E[%dB:LE=\E[%dD:RI=\E[%dC
 terminfo vt100* ms:AL=\E[%p1%dL:DL=\E[%p1%dM:UP=\E[%p1%dA:DO=\E[%p1%dB:LE=\E[%p1%dD:RI=\E[%p1%dC
 
+# Extend color support
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=E[48;5;%dm:AF=E[38;5;%dm'
+defbce "on"
+
 ################
 #
 # keybindings

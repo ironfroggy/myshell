@@ -238,14 +238,14 @@ nnoremap [1;5B j
 
 " There are 2 ways to add your ability to jump between python class libraries, the first is to setup vim to know where the Python libs are so you can use gf to get to them (gf is goto file). You can do this by adding this snippet to your .vimrc:
 
-python << EOF
-import os
-import sys
-import vim
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
+"python << EOF
+"import os
+"import sys
+"import vim
+"for p in sys.path:
+"    if os.path.isdir(p):
+"        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+"EOF
 
 " With that snippet you will be able to go to your import statements and hit gf on one of them and itll jump you to that file.
 
