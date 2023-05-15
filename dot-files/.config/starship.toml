@@ -10,6 +10,8 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:#FCA17D bg:#86BBD8)\
+$memory_usage\
+${custom.cpu_load}\
 $c\
 $elixir\
 $elm\
@@ -101,7 +103,6 @@ format = '[ $symbol $branch ]($style)'
 
 [git_status]
 style = "bg:#FCA17D"
-all_status = "$conflicted$stashed$deleted$renamed$modified$staged$untracked"
 modified = "[M](fg:blue bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
 renamed = "[»](fg:blue bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
 deleted = "[✘](fg:red bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
@@ -136,6 +137,13 @@ symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
 
+[memory_usage]
+disabled = false
+threshold = -1
+# symbol = ' '
+style = "bg:#86BBD8"
+format = '[$symbol$ram_pct]($style)'
+
 [nodejs]
 symbol = ""
 style = "bg:#86BBD8"
@@ -162,8 +170,8 @@ time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
 
-[custom.git_status]
-command = 'git -C /mnt/c/Users/ironf/projects/myshell --no-optional-locks status --porcelain=2 --branch' # shows output of command
-# detect_files = ['foo'] # can specify filters but wildcards are not supported
-when = ''' test -d .git '''
-format = ' [$output]($style)'
+[custom.cpu_load]
+command = "cat /proc/loadavg | cut -d' ' -f-2"
+when = " test true "
+style = "bg:#86BBD8"
+format = '[ ⁘$output]($style)'
