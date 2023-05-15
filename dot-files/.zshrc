@@ -32,13 +32,7 @@ unset __conda_setup
 
 ### Personal .zshrc Lines
 
-. $(which virtualenvwrapper.sh)
-
 eval $(ssh-agent -s) > /dev/null 2>&1
-
-if [[ -r ~/.aliasrc ]]; then
-. ~/.aliasrc
-fi
 
 TERM=xterm-256color
 path=(
@@ -49,6 +43,12 @@ path=(
     ~/projects/myshell/bin/
     ./node_modules/.bin/
 )
+
+. $(which virtualenvwrapper.sh)
+
+if [[ -r ~/.aliasrc ]]; then
+. ~/.aliasrc
+fi
 
 export GIT_EDITOR='vim -c vsplit -c"e SCRATCH" -c"setlocal bt=nofile ft=diff" -c"r!git diff --cached" -c 1'
 
