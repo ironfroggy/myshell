@@ -29,6 +29,9 @@ $time\
 [ ](fg:#33658A)\
 """
 
+scan_timeout = 1000
+command_timeout = 3000
+
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
@@ -98,6 +101,14 @@ format = '[ $symbol $branch ]($style)'
 
 [git_status]
 style = "bg:#FCA17D"
+all_status = "$conflicted$stashed$deleted$renamed$modified$staged$untracked"
+modified = "[M](fg:blue bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
+deleted = "[✘](fg:red bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
+untracked = "[?](fg:#884488 bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
+staged = "[✓](fg:green bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
+conflicted = "[≠](fg:red bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
+ahead = "[⇡](fg:green bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
+behind = "[⇣](fg:green bg:#FCA17D)[$count](fg:black bg:#FCA17D) "
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
@@ -149,3 +160,9 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
+
+[custom.git_status]
+command = 'git -C /mnt/c/Users/ironf/projects/myshell --no-optional-locks status --porcelain=2 --branch' # shows output of command
+# detect_files = ['foo'] # can specify filters but wildcards are not supported
+when = ''' test -d .git '''
+format = ' [$output]($style)'

@@ -17,18 +17,52 @@ bindkey -v
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/claykoi/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('~/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/claykoi/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/claykoi/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "~/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "~/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/claykoi/miniconda3/bin:$PATH"
+        export PATH="~/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-eval "$(starship init zsh)"
+### Personal .zshrc Lines
 
+. $(which virtualenvwrapper.sh)
+
+eval $(ssh-agent -s) > /dev/null 2>&1
+
+if [[ -r ~/.aliasrc ]]; then
+. ~/.aliasrc
+fi
+
+TERM=xterm-256color
+path=(
+    $path
+    /var/lib/gems/1.8/bin/
+    ~/bin
+    ~/.local/bin/
+    ~/projects/myshell/bin/
+    ./node_modules/.bin/
+)
+
+export GIT_EDITOR='vim -c vsplit -c"e SCRATCH" -c"setlocal bt=nofile ft=diff" -c"r!git diff --cached" -c 1'
+
+# Local, unshared zsh environment setup
+if [ -f ~/.bash_local ]; then
+    source ~/.zshrc.local
+fi
+
+# If present, .bin-paths defines machine-local paths to add to PATH
+if [ -f ~/.bin-paths ]; then
+    while read LINE; do
+        export PATH=$PATH:$LINE
+    done < ~/.bin-paths
+fi
+
+# Setup starship prompt customizer
+eval "$(starship init zsh)"

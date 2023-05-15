@@ -142,7 +142,7 @@ hi Normal term=underline ctermfg=Green guifg=#60ff60
 
 " autocmd CursorHold *.py BikeShowScope
 
-au FileType python source ~/.vim/python-menu.vim
+" au FileType python source ~/.vim/python-menu.vim
 
 
 set viminfo='500,f1
@@ -255,9 +255,9 @@ nnoremap [1;5B j
 
 " and then in your .vimrc
 
-set tags+=$HOME/.vim/tags/python.ctags
-" this is GREAT but 3.9MB!!!
-set tags+=$HOME/.vim/tags/bz.ctags
+" set tags+=$HOME/.vim/tags/python.ctags
+" " this is GREAT but 3.9MB!!!
+" set tags+=$HOME/.vim/tags/bz.ctags
 
 " This will give you the ability to use CTRL+] to jump to the method/property under your cursor in the system libraries and CTRL+T to jump back to your source code.
 
@@ -294,51 +294,51 @@ map <silent><A-Left> :tabprevious<CR>
 
 " To add debugging support into vim, we use the pdb module. Add this to your ~/.vim/ftplugin/python.vim to have the ability to quickly add break points and clear them out when you are done debugging:
 
-python << EOF
-def SetBreakpoint():
-    import re
-    nLine = int( vim.eval( 'line(".")'))
+" python << EOF
+" def SetBreakpoint():
+"     import re
+"     nLine = int( vim.eval( 'line(".")'))
 
-    strLine = vim.current.line
-    strWhite = re.search( '^(\s*)', strLine).group(1)
+"     strLine = vim.current.line
+"     strWhite = re.search( '^(\s*)', strLine).group(1)
 
-    vim.current.buffer.append(
-       "%(space)spdb.set_trace() %(mark)s Breakpoint %(mark)s" %
-         {'space':strWhite, 'mark': '#' * 30}, nLine - 1)
+"     vim.current.buffer.append(
+"        "%(space)spdb.set_trace() %(mark)s Breakpoint %(mark)s" %
+"          {'space':strWhite, 'mark': '#' * 30}, nLine - 1)
 
-    for strLine in vim.current.buffer:
-        if strLine == "import pdb":
-            break
-    else:
-        vim.current.buffer.append( 'import pdb', 0)
-        vim.command( 'normal j1')
+"     for strLine in vim.current.buffer:
+"         if strLine == "import pdb":
+"             break
+"     else:
+"         vim.current.buffer.append( 'import pdb', 0)
+"         vim.command( 'normal j1')
 
-vim.command( 'map <f7> :py SetBreakpoint()<cr>')
+" vim.command( 'map <f7> :py SetBreakpoint()<cr>')
 
-def RemoveBreakpoints():
-    import re
+" def RemoveBreakpoints():
+"     import re
 
-    nCurrentLine = int( vim.eval( 'line(".")'))
+"     nCurrentLine = int( vim.eval( 'line(".")'))
 
-    nLines = []
-    nLine = 1
-    for strLine in vim.current.buffer:
-        if strLine == 'import pdb' or strLine.lstrip()[:15] == 'pdb.set_trace()':
-            nLines.append( nLine)
-        nLine += 1
+"     nLines = []
+"     nLine = 1
+"     for strLine in vim.current.buffer:
+"         if strLine == 'import pdb' or strLine.lstrip()[:15] == 'pdb.set_trace()':
+"             nLines.append( nLine)
+"         nLine += 1
 
-    nLines.reverse()
+"     nLines.reverse()
 
-    for nLine in nLines:
-        vim.command( 'normal %dG' % nLine)
-        vim.command( 'normal dd')
-        if nLine < nCurrentLine:
-            nCurrentLine -= 1
+"     for nLine in nLines:
+"         vim.command( 'normal %dG' % nLine)
+"         vim.command( 'normal dd')
+"         if nLine < nCurrentLine:
+"             nCurrentLine -= 1
 
-    vim.command( 'normal %dG' % nCurrentLine)
+"     vim.command( 'normal %dG' % nCurrentLine)
 
-vim.command( 'map <s-f7> :py RemoveBreakpoints()<cr>')
-EOF
+" vim.command( 'map <s-f7> :py RemoveBreakpoints()<cr>')
+" EOF
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " End Awesome Python Settings
@@ -369,63 +369,63 @@ se background=dark
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " F2 Tag List (exuberant Ctags)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" Exuberant Ctags
-" Taglist WOOHOO
-" See also http://vim-taglist.sourceforge.net/manual.html
-"
-" don't change window size in a terminal
-" this is required in screen, but seems to work fine in konsole
-" with it off
-let Tlist_Inc_Winwidth=1
+" " Exuberant Ctags
+" " Taglist WOOHOO
+" " See also http://vim-taglist.sourceforge.net/manual.html
+" "
+" " don't change window size in a terminal
+" " this is required in screen, but seems to work fine in konsole
+" " with it off
+" let Tlist_Inc_Winwidth=1
 
-" change focus to tag window when it's opened
-let Tlist_GainFocus_On_ToggleOpen=1
+" " change focus to tag window when it's opened
+" let Tlist_GainFocus_On_ToggleOpen=1
 
-" Open this awesome plugin on startup
-" probably not recommended if minibufexpl is used (so that it gets to be
-" on top). ... also you should turn Tlist_GainFocus_On_ToggleOpen=0
-let Tlist_Auto_Open=0
+" " Open this awesome plugin on startup
+" " probably not recommended if minibufexpl is used (so that it gets to be
+" " on top). ... also you should turn Tlist_GainFocus_On_ToggleOpen=0
+" let Tlist_Auto_Open=0
 
-" Close vim when only tlist is left open
-let Tlist_Exit_OnlyWindow=1
+" " Close vim when only tlist is left open
+" let Tlist_Exit_OnlyWindow=1
 
-" single click will choose that item
-" (instead of double)
-let Tlist_Use_SingleClick=1
+" " single click will choose that item
+" " (instead of double)
+" let Tlist_Use_SingleClick=1
 
-" Require automatic processing of new or modified files
-let Tlist_Auto_Update=1
+" " Require automatic processing of new or modified files
+" let Tlist_Auto_Update=1
 
-" ALWAYS process the files
-let list_Process_File_Always=1
+" " ALWAYS process the files
+" let list_Process_File_Always=1
 
-" Do not close tags for other files
+" " Do not close tags for other files
+" " let Tlist_File_Fold_Auto_Close=0
+
+" " not display the Vim fold column in the taglist window
+" let Tlist_Enable_Fold_Column=1
+
+" " sort tags by name (instead of by chrono order in the file)
+" " Actually, knowing them by their file order is a bit easier ;-)
+" " let Tlist_Sort_Type="name"
+
+" let Tlist_WinWidth=25
+" let Tlist_Close_On_Select=0
+" let Tlist_Compact_Format=0
+" let Tlist_Display_Tag_Scope=0
 " let Tlist_File_Fold_Auto_Close=0
+" let Tlist_Inc_Winwidth=0
 
-" not display the Vim fold column in the taglist window
-let Tlist_Enable_Fold_Column=1
+" " the all-important toggle key is ALT-1
+" map 1 :TlistToggle<CR>
+" map <Meta-1> :TlistToggle<CR>
+" map F2 :TlistToggle<CR>
 
-" sort tags by name (instead of by chrono order in the file)
-" Actually, knowing them by their file order is a bit easier ;-)
-" let Tlist_Sort_Type="name"
+" map 2 :TlistOpen<CR>
+" map <Meta-2> :TlistOpen<CR>
 
-let Tlist_WinWidth=25
-let Tlist_Close_On_Select=0
-let Tlist_Compact_Format=0
-let Tlist_Display_Tag_Scope=0
-let Tlist_File_Fold_Auto_Close=0
-let Tlist_Inc_Winwidth=0
-
-" the all-important toggle key is ALT-1
-map 1 :TlistToggle<CR>
-map <Meta-1> :TlistToggle<CR>
-map F2 :TlistToggle<CR>
-
-map 2 :TlistOpen<CR>
-map <Meta-2> :TlistOpen<CR>
-
-map 3 :TlistSessionLoad /mnt/non_prod/.development.taglist<CR>
-map <Meta-3> :TlistSessionLoad<CR>
+" map 3 :TlistSessionLoad /mnt/non_prod/.development.taglist<CR>
+" map <Meta-3> :TlistSessionLoad<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " F4 switch between textwidth=72 and textwidth=0
@@ -464,7 +464,7 @@ let TE_Use_Horiz_Window = 0
 let TE_Use_Right_Window = 1
 let TE_Exclude_Dir_Pattern = 'obj.*\|.*test.*|.*old.*'
 let TE_Include_File_Pattern = '.*\.py$\|.*\.txt$|.*\.html$|.*\.ini$|.*\.sh$|.*\.conf$'
-let TE_Ctags_Path = '/usr/bin/ctags-exuberant'
+" let TE_Ctags_Path = '/usr/bin/ctags-exuberant'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " F11 reverse background macro
